@@ -7,6 +7,7 @@ from decouple import config
 # Directorio de entrada y salida
 input_folder = config("FROM")
 output_folder = config("TO")
+resolusion= int(config("HEIHT"))
 
 # Elimina los archivos existentes en la carpeta de salida (opcional)
 shutil.rmtree(output_folder)
@@ -20,7 +21,7 @@ while True:
         video = VideoFileClip(os.path.join(input_folder, filename))
 
             # Reduce la resolución del video
-        video_resized = video.resize(height=config("HEIHT"))
+        video_resized = video.resize(height=resolusion)
 
             # Reduce la tasa de bits del video
         video_resized.write_videofile(os.path.join(output_folder, filename),
